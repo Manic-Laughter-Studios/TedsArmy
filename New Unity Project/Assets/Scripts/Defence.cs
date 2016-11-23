@@ -6,9 +6,9 @@ public class Defence : MonoBehaviour {
     public Transform target; //which clown the turret aims at
     public float defenceDamage; //the damage the defence does
     public float fireRate; //the rate the defence fires at
-    public GameObject bullet; //the bullet gameobject the defence fires
+    public GameObject Bullet; //the bullet gameobject the defence fires
 
-    public float range = 20f;
+    public float range = 5f; //range of defence
 
     public string enemyTag = "Enemy";
 
@@ -19,6 +19,8 @@ public class Defence : MonoBehaviour {
     public bool uselaser = false;
     public LineRenderer lineRenderer;
     public bool active = false;
+
+    public float turnSpeed = 10f;
 
     void Start()
     {
@@ -32,7 +34,7 @@ public class Defence : MonoBehaviour {
         //Find gameObject with the "Enemy" tag
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
 
-        //Store the shortest distance to found enemy
+        //Store the shortest distance to found enemy. if havent found enemy then default is infinity
         float shortestDistance = Mathf.Infinity;
         //Store nearest Enemy
         GameObject nearestEnemy = null;
@@ -64,10 +66,6 @@ public class Defence : MonoBehaviour {
 
     void Update()
     {
-        if (!active)
-        {
-            return;
-        }
         //if no traget is present... dont do anything
         if (target == null)
         {
@@ -97,18 +95,25 @@ public class Defence : MonoBehaviour {
 
     }
 
-    void Shoot()
+    /*void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bullet, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        GameObject bulletGO = (GameObject)Instantiate(Bullet, firePoint.position, firePoint.rotation);
+        Bullet Bullet = bulletGO.GetComponent<Bullet>();
 
-        if (bullet != null)
-            bullet.Find(target);
+        if (Bullet != null)
+            Bullet.Find(target);
+    }*/
+
+    void LockOnTarget()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected() //this draws your range
     {
-        //Range is noe colored red
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }

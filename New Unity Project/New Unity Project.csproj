@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\EnemyStandard.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\GridCell.cs" />
+    <Compile Include="Assets\Scripts\Jackbed.cs" />
     <Compile Include="Assets\Scripts\MusicCrossFade.cs" />
     <Compile Include="Assets\Scripts\NavMesh.cs" />
     <Compile Include="Assets\Scripts\PauseController.cs" />

@@ -32,11 +32,7 @@ public class Enemy : MonoBehaviour {
         health -= defenceDamage;
     }
 
-    //for when reach Jack's bed
-    void OnCollisionEnter(Collision col)
-    {
-        // If the enemy makes it to the end (hits end wall), it will destroy
-    }
+
 
     void OnTriggerEnter(Collider other) //function can this be calllllllled i dont know 
     {
@@ -46,10 +42,5 @@ public class Enemy : MonoBehaviour {
             //TakeDamage functionnnnn can't figure out how to work it
             health -= 1;
         }
-        if (other.gameObject.tag == "Jack")
-        {
-            Destroy(gameObject);
-        }
-
     }
 }
