@@ -3,13 +3,12 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
     
-    public int health;          //clown specific health
+    public int health = 5;      //clown specific health
     public int enemyDamage;     //damage clown does
     public int defenceDamage;   //damage defence does to clown
     public int speed;           //speed clown moves at
     public int enemyValue;      //currency player gets when clown is destroyed
     public int noEnemies;       //number of clowns
-    public int wavesRemaining;  //number of remaining waves
 
 	// Use this for initialization
 	void Start () {
@@ -37,10 +36,6 @@ public class Enemy : MonoBehaviour {
     void OnCollisionEnter(Collision col)
     {
         // If the enemy makes it to the end (hits end wall), it will destroy
-        if (col.gameObject.tag == "Jack")
-        {
-            Destroy(gameObject);
-        }
     }
 
     void OnTriggerEnter(Collider other) //function can this be calllllllled i dont know 
@@ -49,6 +44,12 @@ public class Enemy : MonoBehaviour {
         if (other.gameObject.tag == "Bullet")
         {
             //TakeDamage functionnnnn can't figure out how to work it
+            health -= 1;
         }
+        if (other.gameObject.tag == "Jack")
+        {
+            Destroy(gameObject);
+        }
+
     }
 }
