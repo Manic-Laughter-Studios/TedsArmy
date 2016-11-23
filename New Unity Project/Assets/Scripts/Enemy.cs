@@ -3,10 +3,13 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
     
-    public string Name;
-    public float health;
-    public string weaponname;
-    public float enemydamage;
+    public int health;          //clown specific health
+    public int enemyDamage;     //damage clown does
+    public int defenceDamage;   //damage defence does to clown
+    public int speed;           //speed clown moves at
+    public int enemyValue;      //currency player gets when clown is destroyed
+    public int noEnemies;       //number of clowns
+    public int wavesRemaining;  //number of remaining waves
 
 	// Use this for initialization
 	void Start () {
@@ -25,22 +28,27 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    void TakeDamage(int damage)
+    void TakeDamage(int defenceDamage)
     {
-        health -= damage;
+        health -= defenceDamage;
     }
 
     //for when reach Jack's bed
     void OnCollisionEnter(Collision col)
     {
         // If the enemy makes it to the end (hits end wall), it will destroy
-        if (col.gameObject.name == "Jack")
+        if (col.gameObject.tag == "Jack")
         {
             Destroy(gameObject);
         }
-        else (col.gameObject.tag == "Bullet")
+    }
+
+    void OnTriggerEnter(Collider other) //function can this be calllllllled i dont know 
+    {
+        //If the player hit an object with the bulltet tag
+        if (other.gameObject.tag == "Bullet")
         {
-            TakeDamage;
+            //TakeDamage functionnnnn can't figure out how to work it
         }
     }
 }

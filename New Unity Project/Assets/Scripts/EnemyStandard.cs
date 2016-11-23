@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using static Enemy;
 
 public class EnemyStandard : Enemy {
 
 	// Use this for initialization
-	void protected override Start () {
+	void Start () {
 	
 	}
 	

@@ -79,8 +79,11 @@
     <Compile Include="Assets\Scripts\EnemyStandard.cs" />
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\GridCell.cs" />
+    <Compile Include="Assets\Scripts\MusicCrossFade.cs" />
     <Compile Include="Assets\Scripts\PauseController.cs" />
     <Compile Include="Assets\Scripts\ReturnToGame.cs" />
+    <Compile Include="Assets\Scripts\SaveTest.cs" />
+    <Compile Include="Assets\Scripts\SimpleLevelSaveData.cs" />
     <Compile Include="Assets\Scripts\UILoadLevel.cs" />
     <Compile Include="Assets\Scripts\misc.cs" />
   </ItemGroup>
