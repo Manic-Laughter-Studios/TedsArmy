@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Loadlevel.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\Defence.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Assets\Scripts\NavMesh.cs" />
     <Compile Include="Assets\Scripts\PathScript.cs" />
     <Compile Include="Assets\Scripts\PauseController.cs" />
+    <Compile Include="Assets\Scripts\PauseGame.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\ReturnToGame.cs" />
     <Compile Include="Assets\Scripts\SaveTest.cs" />
