@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class NavMesh : MonoBehaviour {
-
+/*
     //Movement
     [SerializeField]
     private NavMeshAgent agent;
@@ -24,5 +24,5 @@ public class NavMesh : MonoBehaviour {
     void EnemyMove()
     {
         agent.SetDestination(pathEnd.transform.position);
-    }
+    }*/
 }

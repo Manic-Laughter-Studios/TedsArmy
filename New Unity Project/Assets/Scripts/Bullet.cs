@@ -8,6 +8,11 @@ public class Bullet : MonoBehaviour {
     public int defenceDamage;
     private Transform target;
 
+    public void Find(Transform _target)
+    {
+        target = _target;
+    }
+
     // Use this for initialization
     void Start()
     {

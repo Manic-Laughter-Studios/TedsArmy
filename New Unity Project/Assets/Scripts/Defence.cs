@@ -5,8 +5,8 @@ public class Defence : MonoBehaviour {
 
     public Transform target; //which clown the turret aims at
     public float defenceDamage; //the damage the defence does
-    public float fireRate; //the rate the defence fires at
-    public GameObject Bullet; //the bullet gameobject the defence fires
+    public float fireRate = 3; //the rate the defence fires at
+    public GameObject bulletPrefab; //the bullet gameobject the defence fires
 
     public float range = 5f; //range of defence
 
@@ -37,6 +37,7 @@ public class Defence : MonoBehaviour {
         //Store the shortest distance to found enemy. if havent found enemy then default is infinity
         float shortestDistance = Mathf.Infinity;
         //Store nearest Enemy
+        target = null;
         GameObject nearestEnemy = null;
 
         foreach (GameObject enemy in enemies)
@@ -56,16 +57,19 @@ public class Defence : MonoBehaviour {
             //Then target that enemy
             target = nearestEnemy.transform;
         }
-        else
-        {
-            //if they leave range..then stop targeting them
-            target = null;
-        }
     }
 
 
     void Update()
     {
+        fireCountdown -= Time.deltaTime;
+
+        if (target != null)
+        {
+            LockOnTarget();
+            Shoot();
+        }
+        
         //if no traget is present... dont do anything
         if (target == null)
         {
@@ -77,7 +81,7 @@ public class Defence : MonoBehaviour {
             return;
         }
 
-        LockOnTarget();
+        /*LockOnTarget();
         if (uselaser)
         {
             Laser();
@@ -91,18 +95,22 @@ public class Defence : MonoBehaviour {
             }
 
             fireCountdown -= Time.deltaTime;
-        }
+        } */
 
     }
 
-    /*void Shoot()
+    void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(Bullet, firePoint.position, firePoint.rotation);
-        Bullet Bullet = bulletGO.GetComponent<Bullet>();
+        if (fireCountdown <= 0)
+        {
+            GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Bullet bullet = bulletGO.GetComponent<Bullet>();
 
-        if (Bullet != null)
-            Bullet.Find(target);
-    }*/
+            if (bullet != null)
+                bullet.Find(target);
+            fireCountdown = fireRate;
+        }
+    }
 
     void LockOnTarget()
     {
@@ -117,4 +125,6 @@ public class Defence : MonoBehaviour {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
+
 }

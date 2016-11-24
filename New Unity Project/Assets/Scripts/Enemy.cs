@@ -40,7 +40,8 @@ public class Enemy : MonoBehaviour {
         if (other.gameObject.tag == "Bullet")
         {
             //TakeDamage functionnnnn can't figure out how to work it
-            health -= 1;
+            //health -= 1;
+            Destroy(gameObject);
         }
     }
 }
